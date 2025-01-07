@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="logo">
-      <img src="@/assets/car-logo.png" alt="Car Logo" class="car-logo" />
+      <img src="..\assets\images\car-logo.png" alt="Car Logo" class="car-logo" />
     </div>
     <ul class="nav-links">
       <li><a href="#hero">{{ $t('navbar.home') }}</a></li>
