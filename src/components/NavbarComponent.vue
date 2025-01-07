@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <!-- Įdėkite savo automobilių logotipą čia -->
+      <img src="@/assets/car-logo.png" alt="Car Logo" class="car-logo" />
+    </div>
     <ul class="nav-links">
       <li><a href="#hero">{{ $t('navbar.home') }}</a></li>
       <li><a href="#services">{{ $t('navbar.services') }}</a></li>
@@ -62,5 +65,11 @@ export default {
 }
 .language-switcher button:hover {
   background-color: #555;
+}
+
+/* Logotipo stilius */
+.car-logo {
+  width: 100px; /* Pakeiskite pagal norimą dydį */
+  height: auto;
 }
 </style>
