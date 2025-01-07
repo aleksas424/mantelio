@@ -1,7 +1,6 @@
 <template>
   <nav class="navbar">
     <div class="logo">
-      <!-- Įdėkite savo automobilių logotipą čia -->
       <img src="@/assets/car-logo.png" alt="Car Logo" class="car-logo" />
     </div>
     <ul class="nav-links">
