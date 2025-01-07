@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <img src="https://img.freepik.com/free-vector/car-electic-cartoon-vector-icon-illustration-technology-transportation-icon-isolated-flat-vector_138676-10645.jpg?t=st=1736284710~exp=1736288310~hmac=005aed273cf0eba5c131705e04e0d4547471be5b78dc6a1011216d0528bf4494&w=740" alt="Logo" class="logo-image" />
+    </div>
     <ul class="nav-links">
       <li><a href="#hero">{{ $t('navbar.home') }}</a></li>
       <li><a href="#services">{{ $t('navbar.services') }}</a></li>
