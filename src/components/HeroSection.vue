@@ -1,16 +1,16 @@
 <template>
   <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Ramuneliu arbata</h1>
-      <p>Pirma karta Lietuvoje</p>
-      <button class="cta-button">Sužinoti daugiau</button>
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Ramunėlių arbata</h1>
+        <p>Pirma karta Lietuvoje</p>
+        <button class="cta-button">Sužinoti daugiau</button>
+      </div>
     </div>
-    <div class="hero-video-wrapper">
-      <video autoplay muted loop class="hero-video">
-        <source src="@/assets/video.mp4" type="video/mp4" />
-        Jūsų naršyklė nepalaiko video formato.
-      </video>
-    </div>
+    <video autoplay muted loop class="hero-video">
+      <source src="@/assets/video.mp4" type="video/mp4" />
+      Jūsų naršyklė nepalaiko video formato.
+    </video>
   </section>
 </template>
 
@@ -22,18 +22,39 @@ export default {
 
 <style scoped>
 .hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Užtikrina pilno ekrano aukštį */
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(30%); /* Tamsesnis video */
+  z-index: 1; /* Užtikrina, kad video bus fone */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 60px;
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2; /* Užtikrina, kad tekstas bus virš video */
+  background-color: rgba(0, 0, 0, 0.5); /* Pusiau permatomas fonas */
 }
 
 .hero-content {
-  max-width: 50%;
-  color: #ecf0f1;
+  text-align: center;
+  color: #ffffff;
 }
 
 .hero h1 {
@@ -46,7 +67,7 @@ export default {
 .hero p {
   font-size: 1.4rem;
   margin: 15px 0;
-  color: #bdc3c7;
+  color: #ffffff;
 }
 
 .cta-button {
@@ -62,24 +83,5 @@ export default {
 
 .cta-button:hover {
   background-color: #d62839;
-}
-
-.hero-video-wrapper {
-  position: relative;
-  max-width: 45%;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.hero-video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  filter: brightness(40%);
-  transition: filter 0.3s ease;
-}
-
-.hero-video-wrapper:hover .hero-video {
-  filter: brightness(60%);
 }
 </style>
