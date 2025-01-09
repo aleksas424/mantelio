@@ -1,10 +1,9 @@
 <template>
   <nav class="navbar">
     <!-- Logotipas -->
-    <div class="logo">
-      <img src="assets/images/car-logo.png" alt="Car Logo" />
-    </div>
-
+    <div class="Logo">
+  <img src="C:\Users\aleks\Documents\GitHub\mantelio\src\assets\images\Logo1.png" alt="Logo1" />
+</div>
     <!-- Hamburger meniu mygtukas -->
     <button class="hamburger" @click="toggleMenu" aria-label="Toggle navigation">
       <span class="line"></span>
