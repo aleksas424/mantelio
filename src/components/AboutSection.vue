@@ -31,6 +31,7 @@ export default {
 </script>
 
 <style scoped>
+/* Bendras stilius */
 .about {
   display: flex;
   justify-content: center;
@@ -60,6 +61,7 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Expandable content box */
 .content-box.expanded {
   flex-direction: column;
   max-height: 100%;
@@ -155,6 +157,10 @@ export default {
     flex-direction: column;
   }
 
+  .image-container {
+    height: 50%; /* Adjust height for smaller screens */
+  }
+
   .text-container {
     padding: 20px;
   }
@@ -173,6 +179,10 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .content-box {
+    padding: 10px; /* Reduce padding on very small screens */
+  }
+
   .text-container h2 {
     font-size: 1.8rem;
   }

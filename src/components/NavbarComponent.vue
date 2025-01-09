@@ -1,25 +1,32 @@
 <template>
   <nav class="navbar">
+    <!-- Logotipas -->
     <div class="logo">
-      <img src="..\assets\images\car-logo.png" alt="Car Logo" class="car-logo" />
+      <img src="assets/images/car-logo.png" alt="Car Logo" />
     </div>
-    <button class="hamburger" @click="toggleMenu">
+
+    <!-- Hamburger meniu mygtukas -->
+    <button class="hamburger" @click="toggleMenu" aria-label="Toggle navigation">
       <span class="line"></span>
       <span class="line"></span>
       <span class="line"></span>
     </button>
-    <ul :class="['nav-links', { 'open': isMenuOpen }]">
-      <li><a href="#hero" @click="closeMenu">{{ $t('navbar.home') }}</a></li>
-      <li><a href="#services" @click="closeMenu">{{ $t('navbar.services') }}</a></li>
-      <li><a href="#about" @click="closeMenu">{{ $t('navbar.about') }}</a></li>
-      <li><a href="#team" @click="closeMenu">{{ $t('navbar.team') }}</a></li>
-      <li><a href="#contact" @click="closeMenu">{{ $t('navbar.contact') }}</a></li>
-    </ul>
-    <div class="language-switcher">
-      <button @click="changeLanguage('lt')">Lietuvių</button>
-      <button @click="changeLanguage('en')">English</button>
-      <button @click="changeLanguage('ru')">Русский</button>
-      <button @click="changeLanguage('es')">Español</button>
+
+    <!-- Navigacijos nuorodos ir kalbos -->
+    <div :class="['menu', { open: isMenuOpen }]">
+      <ul class="nav-links">
+        <li><a href="#hero" @click="closeMenu">Home</a></li>
+        <li><a href="#services" @click="closeMenu">Services</a></li>
+        <li><a href="#about" @click="closeMenu">About</a></li>
+        <li><a href="#team" @click="closeMenu">Team</a></li>
+        <li><a href="#contact" @click="closeMenu">Contact</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button @click="changeLanguage('lt')">LT</button>
+        <button @click="changeLanguage('en')">EN</button>
+        <button @click="changeLanguage('ru')">RU</button>
+        <button @click="changeLanguage('es')">ES</button>
+      </div>
     </div>
   </nav>
 </template>
@@ -40,29 +47,57 @@ export default {
       this.isMenuOpen = false;
     },
     changeLanguage(lang) {
-      this.$i18n.locale = lang;
-      localStorage.setItem('locale', lang);
+      this.$i18n.locale = lang; // Kalbos pakeitimas naudojant Vue i18n
+      localStorage.setItem("locale", lang); // Išsaugoma pasirinkta kalba
     },
   },
 };
 </script>
 
 <style scoped>
+/* Bendras navbar stilius */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
   background-color: #333;
   color: white;
-  padding: 10px 20px;
   position: relative;
+}
+
+.logo img {
+  width: 100px;
+}
+
+/* Hamburger mygtukas */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* Navigacijos nuorodos */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 20px;
-  transition: transform 0.3s ease-in-out;
 }
 
 .nav-links a {
@@ -72,61 +107,68 @@ export default {
 }
 
 .nav-links a:hover {
-  text-decoration: underline;
+  color: #ffa726;
 }
 
+/* Kalbos pasirinkimas */
 .language-switcher {
-  display: none;
+  display: flex;
+  gap: 10px;
 }
 
-/* Logotipo stilius */
-.car-logo {
-  width: 100px;
-  height: auto;
-}
-
-/* Hamburger meniu stilius */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+.language-switcher button {
   background: none;
-  border: none;
-  padding: 0;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.hamburger .line {
-  width: 25px;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
+.language-switcher button:hover {
+  background-color: #555;
 }
 
-/* Mobilus dizainas */
+/* Responsyvumas */
 @media screen and (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: #333;
-    transform: translateY(-100%);
+  .hamburger {
+    display: flex;
   }
 
-  .nav-links.open {
-    transform: translateY(0);
+  .menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    display: none;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 
   .language-switcher {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo img {
+    width: 80px;
   }
 
-  .hamburger {
-    display: flex;
+  .hamburger .line {
+    width: 20px;
   }
 }
 </style>
